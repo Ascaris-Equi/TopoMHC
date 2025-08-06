@@ -115,7 +115,7 @@ python infer.py
 
 📁 Project Structure
 stylus
-
+'''
 peptide-immunogenicity-prediction/
 ├── data.py              # Dataset generation
 ├── md.py               # Molecular dynamics & conformations
@@ -134,7 +134,7 @@ peptide-immunogenicity-prediction/
 │   ├── immunogenicity_model.pth
 │   └── feature_processor.pkl
 └── README.md
-
+'''
 🔬 Technical Details
 Topological Features
 
@@ -156,11 +156,11 @@ Model Architecture
 
 📊 Performance
 Metric	Score
-Accuracy	85.2%
-Precision	83.7%
-Recall	86.1%
-F1-Score	84.9%
-AUC-ROC	0.91
+Accuracy	[TODO]
+Precision	[TODO]
+Recall	[TODO]
+F1-Score	[TODO]
+AUC-ROC	[TODO]
 💡 Usage Examples
 Python API
 python
@@ -245,10 +245,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 📞 Contact
 
-    Author: Your Name
-    Email: your.email@domain.com
-    GitHub: @yourusername
-    LinkedIn: Your LinkedIn
+    Author: TO BE ADD
+    Email: admin@bayvaxbop.com
 
 🐛 Known Issues
 
@@ -264,4 +262,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
     Multi-species immunogenicity prediction
     Real-time streaming predictions
 
-⭐ If you find this project useful, please give it a star! ⭐
+⭐ If you find this project useful, please give it a star! ⭐ Happy Researching ❤
