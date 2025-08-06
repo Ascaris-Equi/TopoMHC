@@ -1,9 +1,6 @@
 Peptide Immunogenicity Prediction using Topological and Sequential Features
 
-[Python](https://python.org)
-[PyTorch](https://pytorch.org)
-[RDKit](https://rdkit.org)
-[License](LICENSE)
+Python • PyTorch • RDKit • License
 
 A deep learning framework for predicting peptide immunogenicity by integrating topological features from molecular dynamics simulations and sequential features from protein language models.
 🚀 Features
@@ -15,43 +12,36 @@ A deep learning framework for predicting peptide immunogenicity by integrating t
     Easy Inference: Simple command-line interface for single sequence or batch predictions
 
 🏗️ Architecture Overview
+mermaid
 
-Input Peptide Sequence
-         ↓
-    ┌─────────────────┬─────────────────┐
-    ↓                 ↓                 ↓
-Conformation      ESM-2 Protein    Topological
-Generation        Language Model    Data Analysis
-(RDKit)           Embeddings        (Persistent Homology)
-    ↓                 ↓                 ↓
-Structural        Sequential        Topological
-Features          Features          Features
-    ↓                 ↓                 ↓
-    └─────────────────┬─────────────────┘
-                      ↓
-            Cross-Attention Fusion
-                      ↓
-              Classification Head
-                      ↓
-            Immunogenicity Score
+flowchart TD
+    A[Input Peptide Sequence] --> B1[Conformation Generation (RDKit)]
+    A --> B2[ESM-2 Protein Language Model Embeddings]
+    A --> B3[Topological Data Analysis (Persistent Homology)]
+    B1 --> C1[Structural Features]
+    B2 --> C2[Sequential Features]
+    B3 --> C3[Topological Features]
+    C1 --> D[Cross-Attention Fusion]
+    C2 --> D
+    C3 --> D
+    D --> E[Classification Head]
+    E --> F[Immunogenicity Score]
 
 📋 Requirements
 Core Dependencies
-bash
 
-Python >= 3.8
-PyTorch >= 1.9
-RDKit >= 2022.03
-NumPy >= 1.21
-Pandas >= 1.3
-Scikit-learn >= 1.0
+    Python >= 3.8
+    PyTorch >= 1.9
+    RDKit >= 2022.03
+    NumPy >= 1.21
+    Pandas >= 1.3
+    Scikit-learn >= 1.0
 
 Optional (for enhanced features)
-bash
 
-transformers >= 4.21  # For ESM-2 embeddings
-gudhi >= 3.4         # For topological data analysis
-matplotlib >= 3.5    # For visualization
+    transformers >= 4.21 <sub>For ESM-2 embeddings</sub>
+    gudhi >= 3.4 <sub>For topological data analysis</sub>
+    matplotlib >= 3.5 <sub>For visualization</sub>
 
 🛠️ Installation
 Option 1: Conda (Recommended)
@@ -68,7 +58,7 @@ conda activate peptide-pred
 # Install dependencies
 conda install -c conda-forge rdkit pytorch pandas scikit-learn
 conda install -c conda-forge gudhi  # Optional
-pip install transformers  # Optional, for ESM-2
+pip install transformers            # Optional, for ESM-2
 
 Option 2: Pip
 bash
@@ -79,62 +69,59 @@ cd peptide-immunogenicity-prediction
 pip install -r requirements.txt
 
 🚀 Quick Start
-1. Generate Dataset
-bash
+
+    Generate Dataset
+    bash
 
 python data.py
 
-2. Extract Features
+Extract Features
 bash
 
 # Generate molecular conformations
 python md.py
-
 # Compute topological features
 python topo.py
-
 # Extract ESM-2 sequence embeddings
 python esm.py
 
-3. Train Model
+Train Model
 bash
 
 python train.py
 
-4. Make Predictions
+Make Predictions
 bash
 
-# Single sequence prediction
-python infer.py --sequence "NPCNNPLKARCMK"
-
-# Batch prediction from file
-python infer.py --file peptides.txt
-
-# Interactive mode
-python infer.py
+    # Single sequence prediction
+    python infer.py --sequence "NPCNNPLKARCMK"
+    # Batch prediction from file
+    python infer.py --file peptides.txt
+    # Interactive mode
+    python infer.py
 
 📁 Project Structure
 stylus
-'''
+
 peptide-immunogenicity-prediction/
-├── data.py              # Dataset generation
-├── md.py               # Molecular dynamics & conformations
-├── topo.py             # Topological feature extraction
-├── esm.py              # ESM-2 sequence feature extraction
-├── model.py            # Neural network architecture
-├── train.py            # Training pipeline
-├── infer.py            # Inference and prediction
-├── requirements.txt    # Python dependencies
-├── data/              # Generated datasets and features
+├── data.py               # Dataset generation
+├── md.py                 # Molecular dynamics & conformations
+├── topo.py               # Topological feature extraction
+├── esm.py                # ESM-2 sequence feature extraction
+├── model.py              # Neural network architecture
+├── train.py              # Training pipeline
+├── infer.py              # Inference and prediction
+├── requirements.txt      # Python dependencies
+├── data/                 # Generated datasets and features
 │   ├── peptide_dataset.csv
 │   ├── conformations/
 │   ├── topological_features.pkl
 │   └── esm_features.pkl
-├── models/            # Trained models
+├── models/               # Trained models
 │   ├── immunogenicity_model.pth
 │   └── feature_processor.pkl
 └── README.md
-'''
+
 🔬 Technical Details
 Topological Features
 
@@ -149,10 +136,10 @@ Sequential Features
 
 Model Architecture
 
-    Cross-Attention Mechanism: Learns interactions between topological and sequential features
-    Multi-head Attention: 8 attention heads for diverse feature interactions
+    Cross-Attention Mechanism
+    Multi-head Attention: 8 attention heads
     Residual Connections: Skip connections with layer normalization
-    Classification Head: Multi-layer perceptron with dropout regularization
+    Classification Head: Multi-layer perceptron with dropout
 
 📊 Performance
 Metric	Score
@@ -184,7 +171,6 @@ bash
 
 # Predict single sequence
 python infer.py --sequence "NPCNNPLKARCMK"
-
 # Output:
 # Sequence: NPCNNPLKARCMK
 # Prediction: Immunogenic
@@ -198,6 +184,7 @@ echo -e "NPCNNPLKARCMK\nLCKTATFEDVERR\nQAINYRQMWGDR" > sequences.txt
 python infer.py --file sequences.txt
 
 🔧 Configuration
+
 Model Parameters
 
     hidden_dim: Hidden dimension size (default: 256)
@@ -262,4 +249,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
     Multi-species immunogenicity prediction
     Real-time streaming predictions
 
-⭐ If you find this project useful, please give it a star! ⭐ Happy Researching ❤
+⭐ If you find this project useful, please give it a star!
+❤ Happy Researching!
